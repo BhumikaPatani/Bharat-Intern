@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header Styling */
+header {
+  background: #35424a;
+  color: #ffffff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5em;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  justify-content: center;
+  background: #35424a;
+}
+
+nav a {
+  color: #ffffff;
+  padding: 15px 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background 0.3s;
+}
+
+nav a:hover {
+  background: #e8491d;
+}
+
+/* Main Content Styling */
+main {
+  flex: 1;
+  padding: 20px;
+}
+
+/* Footer Styling */
+footer {
+  background: #35424a;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px 0;
+}
+
+/* Post Container */
+.post {
+  background: #ffffff;
+  margin: 20px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+}
+
+.post:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Post Title */
+.post h2 {
+  margin-bottom: 10px;
+  font-size: 1.5em;
+}
+
+/* Post Content */
+.post p {
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+/* "Read More" Link */
+.post a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #e8491d;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.post a:hover {
+  color: #35424a;
+}
+
+
+  </style>
+
+  <title>Home</title>
+</head>
+<body>
+  <header>
+    <h1>Blog</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/compose">Compose</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <% posts.forEach(post => { %>
+      <div class="post">
+        <h2><%= post.title %></h2>
+        <p><%= post.content.substring(0, 100) %>...</p>
+        <a href="/posts/<%= post._id %>">Read More</a>
+      </div>
+    <% }) %>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Blog. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>

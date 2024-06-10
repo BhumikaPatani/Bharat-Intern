@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+  /* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header Styling */
+header {
+  background: #35424a;
+  color: #ffffff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5em;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  justify-content: center;
+  background: #35424a;
+}
+
+nav a {
+  color: #ffffff;
+  padding: 15px 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background 0.3s;
+}
+
+nav a:hover {
+  background: #e8491d;
+}
+
+/* Main Content Styling */
+main {
+  flex: 1;
+  padding: 20px;
+}
+
+/* Footer Styling */
+footer {
+  background: #35424a;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px 0;
+}
+
+/* Form Styling */
+form {
+  background: #ffffff;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 600px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+form:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+form input[type="text"],
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form button {
+  display: inline-block;
+  padding: 10px 20px;
+  color: #ffffff;
+  background: #e8491d;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+form button:hover {
+  background: #35424a;
+}
+
+  </style>
+  <title>Compose</title>
+</head>
+<body>
+  <header>
+    <h1>Compose a New Post</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/compose">Compose</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <form action="/compose" method="POST">
+      <input type="text" name="postTitle" placeholder="Title" required>
+      <textarea name="postContent" rows="10" placeholder="Content" required></textarea>
+      <button type="submit">Publish</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Blog. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
