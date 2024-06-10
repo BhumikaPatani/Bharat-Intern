@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Registration</title>
+  <style>
+      body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #976f6f, #876060,#815e5e,#897171);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      animation: fadeInBackground 5s ease-in-out infinite alternate;
+    }
+
+    @keyframes fadeInBackground {
+      0% {
+        background: linear-gradient(to bottom, #635a5a, #594a4a,#654e4e,#9c9393);
+      }
+      100% {
+        background: linear-gradient(to bottom, #635a5a, #594a4a,#9c9393,#9c9393);
+      }
+    }
+
+   
+
+    #registrationForm {
+      width: 400px;
+      background: linear-gradient(to bottom, #ffffff, #f0f0f0);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      color: #666;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="date"],
+    input[type="tel"] {
+      width: calc(100% - 20px);
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus,
+    input[type="date"]:focus,
+    input[type="tel"]:focus {
+      border-color: #786968;
+      outline: none;
+    }
+
+    button {
+      background-color: #84746f;
+      color: white;
+      padding: 15px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.3s ease-in-out;
+    }
+
+    button:hover {
+      background-color:#9c9393;
+    }
+
+    .error {
+      color: rgb(136, 99, 92);
+      font-size: 0.9em;
+      display: none;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <form id="registrationForm" action="/register" method="POST">
+    <h2>User Registration</h2> 
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username">
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email">
+    <span id="emailError" class="error">Email must contain @</span>
+
+    <label for="birthdate">Birthdate:</label>
+    <input type="date" id="birthdate" name="birthdate" required>
+
+    <label for="mobile">Mobile Number:</label>
+    <input type="tel" id="mobile" name="mobile" pattern="\d{10}">
+    <span id="mobileError" class="error">Mobile number must be 10 digits</span>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password">
+    <span id="passwordError" class="error">Password must contain at least one special character: !@#$%^&amp;*</span>
+
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" id="confirmPassword" name="confirmPassword">
+    <span id="confirmPasswordError" class="error">Passwords do not match</span>
+
+    <button type="submit">Register</button>
+  </form>
+  <script>
+    document.getElementById('email').addEventListener('change', function () {
+      var email = this.value;
+      var emailError = document.getElementById('emailError');
+      if (!email.includes('@')) {
+        emailError.style.display = 'block';
+      } else {
+        emailError.style.display = 'none';
+      }
+    });
+
+    document.getElementById('mobile').addEventListener('change', function () {
+      var mobile = this.value;
+      var mobileError = document.getElementById('mobileError');
+      if (!/^\d{10}$/.test(mobile)) {
+        mobileError.style.display = 'block';
+      } else {
+        mobileError.style.display = 'none';
+      }
+    });
+
+    document.getElementById('password').addEventListener('change', function () {
+      var password = this.value;
+      var passwordError = document.getElementById('passwordError');
+      if (!/[!@#$%^&*]/.test(password)) {
+        passwordError.style.display = 'block';
+      } else {
+        passwordError.style.display = 'none';
+      }
+    });
+
+    document.getElementById('confirmPassword').addEventListener('change', function () {
+      var password = document.getElementById('password').value;
+      var confirmPassword = this.value;
+      var confirmPasswordError = document.getElementById('confirmPasswordError');
+      if (password !== confirmPassword) {
+        confirmPasswordError.style.display = 'block';
+      } else {
+        confirmPasswordError.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+
+</html>
